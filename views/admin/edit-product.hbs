@@ -1,0 +1,39 @@
+ <div class="container">
+ <form action="/admin/edit-product/{{product._id}}" method="POST" enctype="multipart/form-data">
+ <h1 style="text-align: center;">EDITE PRODUCT</h1>
+  <div class="form-row ">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">name</label>
+      <input type="text" class="form-control" name='name' id="" value="{{product.name}}">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">catogary</label>
+      <input type="text" class="form-control" name="catogary" id="" value="{{product.catogary}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">discription</label>
+    <input type="text" class="form-control" id="" name="discripion" value="{{product.discripion}}">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="inputAddress">price</label>
+    <input type="number" class="form-control" id="" name="price" value="{{product.price}}">
+  </div>
+    <div class="form-group col-md-12">
+    <label for="inputAddress">image</label>
+    <img src="/images/{{product._id}}.jpg" alt="" style="width: 100px;hight: 100px;" id="imageView">
+    <input type="file" class="form-control" id="" name="image" placeholder="image" onchange="View(event)">
+  </div>
+   
+  
+  </div>
+  <button type="submit" class="btn btn-primary"> submit</button>
+</form>
+</div>
+{{!-- change images auto  --}}
+<script>
+  function View(event){
+    document.getElementById('imageView').src=URL.createObjectURL(event.target.files[0])
+  }
+</script>
