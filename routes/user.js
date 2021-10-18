@@ -69,11 +69,15 @@ router.get('/', function (req, res, next) {
     req.session.destroy()
     res.redirect('/')
   })
-   router.get('/cart',varifyLogin,(req,res) => {
-    res.render('user/cart-page')
+   router.get('/cart',varifyLogin,async(req,res) => {
+     let product =await userhelper.getCartProduct(req.session.user._id)
+     console.log(product);
+    res.render('user/cart-page',{product})
   })
-router.get('/add-to-cart/:id',(req,res)=>{
-  userhelper.addToCart(req.params.id,req.session.user._id)
+router.get('/add-to-cart/:id',varifyLogin,(req,res)=>{
+  userhelper.addToCart(req.params.id,req.session.user._id).then(()=>{
+    res.redirect('/')
+  })
 
 })
 
