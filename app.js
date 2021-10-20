@@ -25,7 +25,7 @@ app.use(fileupload())
 app.use(session({secret:'key',cookie:{maxAge:600000000}}))
 db.connect((err)=>{
   if (err) return console.log('database connection error'); 
-  else  console.log('db connect 27017');
+  else  console.log('database connect 27017 port');
 })
 
 
